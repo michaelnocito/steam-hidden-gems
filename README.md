@@ -332,3 +332,17 @@ actually hired to use, each highlighting a different question:
 
 Each version links back here for the "how it was built" story. *(Links added as
 each is published.)*
+
+---
+
+## About
+
+Built by **Michael Nocito**, data analyst. This project is part of a broader set
+of analyst learning tools and portfolio work:
+
+- 🧰 **[Analyst Prep Kit](https://michaelnocito.github.io/analyst-prep-kit/)** — hands-on
+  Excel, SQL, Python, Power BI, and Tableau practice kits.
+- 🌐 **[michaelnocito.github.io](https://michaelnocito.github.io)** — portfolio & more projects.
+
+*If you know a hidden gem that belongs on this list — or spot one that shouldn't —
+open an issue. Feedback welcome.*
