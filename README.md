@@ -204,6 +204,31 @@ wrong. A record can be internally valid yet contradict reality — human validat
 is the last essential filter, and documenting what you find is what makes the
 analysis trustworthy.
 
+## The Queries Are Written to Teach
+
+The analysis lives in **[`queries/hidden_gems.sql`](queries/hidden_gems.sql)** —
+you can read it right here on GitHub (it renders in the browser; no download
+needed) or open it in DB Browser to run it yourself. It's deliberately written
+as a **learning resource**, not just working code:
+
+- **A `WHY` header on every step** — explains the *reason* for the question
+  before the SQL, so you follow the thinking, not just the syntax.
+- **Line-by-line "read out loud" comments** — each query is narrated in plain
+  English (`--SELECT the Name column`, `--WHERE at least 2,000 reviews`), so a
+  beginner can map each line to what it does.
+- **Each function explained on its first few uses, then phased out** — `CAST`,
+  `ROUND`, `COUNT`, `GROUP BY`, `IN`, etc. are spelled out the first times they
+  appear (repetition to reinforce), then used plainly once they're familiar.
+- **A glossary block at the top** — every function/keyword defined in one place
+  for quick reference.
+- **The full reasoning inline** — the data-cleaning story, the noise-filtering
+  logic, the threshold tuning, and the validation notes all live in the file as
+  comments, so the code and its rationale travel together.
+
+If you're learning SQL, reading the file top to bottom walks you through a real
+analysis the way it actually unfolds: verify the data, explore it, measure
+quality, filter noise, tune thresholds, and validate the result.
+
 ## How to Build the Database (step by step)
 
 New to databases? This section assumes **zero prior setup**. By the end you'll
