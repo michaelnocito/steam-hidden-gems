@@ -4,6 +4,71 @@ A SQL analysis of the Steam game catalog to surface **"hidden gems"**: highly
 rated games that haven't reached a mainstream audience. Built with SQLite and
 DB Browser for SQLite.
 
+## 🎮 The Hidden Gems
+
+Out of **~125,000 games**, exactly **175** clear every bar of the hidden-gem
+definition: *2,000+ reviews, 95%+ positive, priced ≤ $20, and a low ownership
+tier (under ~200k owners).* These are games a devoted audience loves that most
+people have never heard of.
+
+### Top 25 hidden gems
+
+| # | Game | % Positive | Reviews | Price | Est. Owners |
+|--:|------|-----------:|--------:|------:|-------------|
+| 1 | A Castle Full of Cats | 99.4% | 3,986 | $2.39 | 100k–200k |
+| 2 | Aventura Copilului Albastru și Urât | 99.3% | 2,452 | $1.33 | 50k–100k |
+| 3 | The Upturned | 99.3% | 2,347 | $5.99 | 50k–100k |
+| 4 | Patrick's Parabox | 99.2% | 4,437 | $9.99 | 100k–200k |
+| 5 | Smushi Come Home | 99.1% | 2,191 | $9.99 | 50k–100k |
+| 6 | Lil Gator Game | 99.0% | 4,691 | $9.99 | 50k–100k |
+| 7 | Buy a Croquette! | 99.0% | 4,355 | **Free** | 100k–200k |
+| 8 | A Building Full of Cats | 99.0% | 3,969 | $0.99 | 50k–100k |
+| 9 | Look Outside | 99.0% | 2,615 | $6.99 | 50k–100k |
+| 10 | Threefold Recital | 98.9% | 3,436 | $11.99 | 50k–100k |
+| 11 | planetarian HD | 98.9% | 2,947 | $3.99 | 20k–50k |
+| 12 | 星空列车与白的旅行 (Starlight Train) | 98.8% | 5,265 | $5.99 | 20k–50k |
+| 13 | Word Game: Episode 0 | 98.8% | 4,482 | **Free** | 100k–200k |
+| 14 | Picayune Dreams | 98.8% | 3,179 | $2.99 | 100k–200k |
+| 15 | OneShot: World Machine Edition | 98.8% | 2,773 | $7.99 | 50k–100k |
+| 16 | Papa's Pizzeria Deluxe | 98.8% | 2,659 | $4.79 | 50k–100k |
+| 17 | Summer Pockets | 98.7% | 4,279 | $17.99 | 50k–100k |
+| 18 | The Supper | 98.6% | 4,064 | **Free** | 100k–200k |
+| 19 | Felvidek | 98.6% | 3,982 | $7.36 | 100k–200k |
+| 20 | White Knuckle | 98.6% | 2,992 | $12.59 | 100k–200k |
+| 21 | Your Turn To Die -Death Game By Majority- | 98.6% | 2,550 | $13.59 | 100k–200k |
+| 22 | Touhou Tenkuushou ~ Hidden Star in Four Seasons | 98.5% | 4,428 | $14.99 | 50k–100k |
+| 23 | I Am Your Beast | 98.5% | 3,604 | $13.99 | 100k–200k |
+| 24 | Milo and the Magpies | 98.5% | 3,086 | $1.67 | 100k–200k |
+| 25 | Epiphyllum in Love | 98.5% | 2,213 | $2.35 | 50k–100k |
+
+### Top 10 *free* hidden gems
+
+| # | Game | % Positive | Reviews | Est. Owners |
+|--:|------|-----------:|--------:|-------------|
+| 1 | Buy a Croquette! | 99.0% | 4,355 | 100k–200k |
+| 2 | Word Game: Episode 0 | 98.8% | 4,482 | 100k–200k |
+| 3 | The Supper | 98.6% | 4,064 | 100k–200k |
+| 4 | Cureocity | 98.3% | 2,630 | 100k–200k |
+| 5 | Katawa Shoujo | 98.2% | 3,736 | 100k–200k |
+| 6 | Ticy Adventure Club | 98.1% | 3,000 | 100k–200k |
+| 7 | Swallow the Sea | 97.5% | 2,243 | 100k–200k |
+| 8 | I commissioned some bees 0 | 97.0% | 4,277 | 50k–100k |
+| 9 | The Good Time Garden | 95.9% | 2,606 | 100k–200k |
+| 10 | one night, hot springs | 95.5% | 2,774 | 100k–200k |
+
+**What the list reveals:** hidden gems skew heavily toward **cozy, short, and
+narrative indie games** — cat puzzlers, visual novels, and low-price experiences
+— rather than big-budget genres. They win on *craft and charm*, not marketing
+budget, which is exactly why they stay under the radar.
+
+*Rankings are by % positive, tie-broken by review count. The non-English titles
+(#2 Romanian, #12 Chinese) are a direct result of the [language-agnostic
+scope](#scope--assumptions). Two data artifacts — Portal 2 and Batman: Arkham
+City — surfaced through the filters but were excluded as stale/corrupted store
+entries; see [Validation](#validation).*
+
+---
+
 > ### Why this project is worth a read
 > This is a good example of **real-world data and how to troubleshoot it.** Public
 > datasets are rarely clean — this one ships from Kaggle with a broken header that
@@ -25,48 +90,6 @@ flowchart LR
     E --> F[Validate results<br/>against reality]
     F --> G[175 hidden gems<br/>top 25 showcased]
 ```
-
-## Key Findings
-
-Out of **~125,000 games**, exactly **175** clear every bar of the hidden-gem
-definition: *2,000+ reviews, 95%+ positive, priced ≤ $20, and a low ownership
-tier (under ~200k owners).* These are games a devoted audience loves, that most
-people have never heard of. The top of the list:
-
-| # | Game | % Positive | Reviews | Price | Est. Owners |
-|--:|------|-----------:|--------:|------:|-------------|
-| 1 | A Castle Full of Cats | 99.4% | 3,986 | $2.39 | 100k–200k |
-| 2 | Aventura Copilului Albastru și Urât | 99.3% | 2,452 | $1.33 | 50k–100k |
-| 3 | The Upturned | 99.3% | 2,347 | $5.99 | 50k–100k |
-| 4 | Patrick's Parabox | 99.2% | 4,437 | $9.99 | 100k–200k |
-| 5 | Smushi Come Home | 99.1% | 2,191 | $9.99 | 50k–100k |
-| 6 | Lil Gator Game | 99.0% | 4,691 | $9.99 | 50k–100k |
-| 7 | Buy a Croquette! | 99.0% | 4,355 | **Free** | 100k–200k |
-| 8 | A Building Full of Cats | 99.0% | 3,969 | $0.99 | 50k–100k |
-| 9 | Look Outside | 99.0% | 2,615 | $6.99 | 50k–100k |
-| 10 | Threefold Recital | 98.9% | 3,436 | $11.99 | 50k–100k |
-| 11 | planetarian HD | 98.9% | 2,947 | $3.99 | 20k–50k |
-| 12 | 星空列车与白的旅行 (Starlight Train) | 98.8% | 5,265 | $5.99 | 20k–50k |
-| 13 | Word Game: Episode 0 | 98.8% | 4,482 | **Free** | 100k–200k |
-| 14 | Picayune Dreams | 98.8% | 3,179 | $2.99 | 100k–200k |
-| 15 | OneShot: World Machine Edition | 98.8% | 2,773 | $7.99 | 50k–100k |
-
-*(True ranking by % positive, tie-broken by review count. The only rows removed
-are documented data artifacts — see below. Note the Romanian (#2) and Chinese
-(#12) titles: a direct result of the language-agnostic scope.)*
-
-**Notable free hidden gems** (95%+ positive, low ownership): *Buy a Croquette!*,
-*Word Game: Episode 0*, *The Supper*, *Katawa Shoujo*, *one night, hot springs*,
-*Tiny Bunny: Prologue*.
-
-**What the list reveals:** hidden gems skew heavily toward **cozy, short, and
-narrative indie games** — cat puzzlers, visual novels, and low-price experiences
-— rather than big-budget genres. They win on *craft and charm*, not marketing
-budget, which is exactly why they stay under the radar.
-
-> *Data artifacts excluded from the showcase: Portal 2 and Batman: Arkham City
-> surfaced through the filters but are stale/corrupted store entries, not real
-> hidden gems — see [Validation](#validation).*
 
 ## Data Source
 
