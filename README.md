@@ -26,6 +26,48 @@ flowchart LR
     F --> G[175 hidden gems<br/>top 25 showcased]
 ```
 
+## Key Findings
+
+Out of **~125,000 games**, exactly **175** clear every bar of the hidden-gem
+definition: *2,000+ reviews, 95%+ positive, priced ≤ $20, and a low ownership
+tier (under ~200k owners).* These are games a devoted audience loves, that most
+people have never heard of. The top of the list:
+
+| # | Game | % Positive | Reviews | Price | Est. Owners |
+|--:|------|-----------:|--------:|------:|-------------|
+| 1 | A Castle Full of Cats | 99.4% | 3,986 | $2.39 | 100k–200k |
+| 2 | Aventura Copilului Albastru și Urât | 99.3% | 2,452 | $1.33 | 50k–100k |
+| 3 | The Upturned | 99.3% | 2,347 | $5.99 | 50k–100k |
+| 4 | Patrick's Parabox | 99.2% | 4,437 | $9.99 | 100k–200k |
+| 5 | Smushi Come Home | 99.1% | 2,191 | $9.99 | 50k–100k |
+| 6 | Lil Gator Game | 99.0% | 4,691 | $9.99 | 50k–100k |
+| 7 | Buy a Croquette! | 99.0% | 4,355 | **Free** | 100k–200k |
+| 8 | A Building Full of Cats | 99.0% | 3,969 | $0.99 | 50k–100k |
+| 9 | Look Outside | 99.0% | 2,615 | $6.99 | 50k–100k |
+| 10 | Threefold Recital | 98.9% | 3,436 | $11.99 | 50k–100k |
+| 11 | planetarian HD | 98.9% | 2,947 | $3.99 | 20k–50k |
+| 12 | 星空列车与白的旅行 (Starlight Train) | 98.8% | 5,265 | $5.99 | 20k–50k |
+| 13 | Word Game: Episode 0 | 98.8% | 4,482 | **Free** | 100k–200k |
+| 14 | Picayune Dreams | 98.8% | 3,179 | $2.99 | 100k–200k |
+| 15 | OneShot: World Machine Edition | 98.8% | 2,773 | $7.99 | 50k–100k |
+
+*(True ranking by % positive, tie-broken by review count. The only rows removed
+are documented data artifacts — see below. Note the Romanian (#2) and Chinese
+(#12) titles: a direct result of the language-agnostic scope.)*
+
+**Notable free hidden gems** (95%+ positive, low ownership): *Buy a Croquette!*,
+*Word Game: Episode 0*, *The Supper*, *Katawa Shoujo*, *one night, hot springs*,
+*Tiny Bunny: Prologue*.
+
+**What the list reveals:** hidden gems skew heavily toward **cozy, short, and
+narrative indie games** — cat puzzlers, visual novels, and low-price experiences
+— rather than big-budget genres. They win on *craft and charm*, not marketing
+budget, which is exactly why they stay under the radar.
+
+> *Data artifacts excluded from the showcase: Portal 2 and Batman: Arkham City
+> surfaced through the filters but are stale/corrupted store entries, not real
+> hidden gems — see [Validation](#validation).*
+
 ## Data Source
 
 **Steam Games Dataset** by FronkonGames (Kaggle, free):
@@ -250,3 +292,20 @@ You're now ready to run the analysis in [`queries/hidden_gems.sql`](queries/hidd
 
 Full data files and `steam_games.db` are excluded via `.gitignore` — rebuild
 them locally using the steps above.
+
+## Roadmap: Visualizing These Findings
+
+This repo is the **methodology home base** — the cleaning, the SQL, and the
+validation. The same findings are being rendered in the tools analysts are
+actually hired to use, each highlighting a different question:
+
+- [ ] **Excel + SQL** — export the results to a workbook: a ranked hidden-gems
+  table plus a pivot/chart view. The most common real-world SQL → spreadsheet
+  handoff, and the most accessible way to explore the list. *(next)*
+- [ ] **Tableau Public** — an interactive dashboard: filter gems by genre,
+  price, and ownership, with a live public link anyone can open.
+- [ ] **Power BI** — a price-vs-rating / value-per-hour view, covering the other
+  major BI tool.
+
+Each version links back here for the "how it was built" story. *(Links added as
+each is published.)*
