@@ -1,0 +1,17 @@
+# Large data files & database — too big for GitHub (100MB limit).
+# Rebuild the DB locally from the CSV (see README). Sample CSV is committed.
+*.db
+*.sqlite
+handoff_bundle/steam_raw.csv
+handoff_bundle/steam_clean.csv
+
+# Keep the small sample so reviewers can see the data shape
+!handoff_bundle/steam_sample.csv
+
+# Large raw data (over GitHub 100MB limit) -- rebuild from Kaggle source
+handoff_bundle/games.json
+
+# Internal scaffolding -- not part of the public deliverable
+handoff_bundle/claude-code-handoff.md
+handoff_bundle/portfolio-scoping-kit.jsx
+steam_games.sql
