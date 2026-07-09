@@ -347,6 +347,11 @@ This repo is the **methodology home base** — the cleaning, the SQL, and the
 validation. The same findings are being rendered in the tools analysts are
 actually hired to use, each highlighting a different question:
 
+- [x] **[Browsable list + live player voting](https://michaelnocito.github.io/steam-hidden-gems-list/)** —
+  a public front-end for the 175 gems (cover art, ratings, Steam links) where
+  visitors vote on whether each pick really is a hidden gem, turning the
+  analysis into a "predicted vs. real players" feedback loop.
+  ([repo](https://github.com/michaelnocito/steam-hidden-gems-list))
 - [ ] **Excel + SQL** — export the results to a workbook: a ranked hidden-gems
   table plus a pivot/chart view. The most common real-world SQL → spreadsheet
   handoff, and the most accessible way to explore the list. *(next)*
