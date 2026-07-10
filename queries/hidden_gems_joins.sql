@@ -34,6 +34,12 @@
 -- STEPS (in DB Browser for SQLite):
 --   1. Download "Game Recommendations on Steam" from Kaggle
 --      (antonkozyriev). We only need recommendations.csv.
+--      NOTE: Kaggle hands you a .zip (e.g. "archive.zip") that
+--      also contains games.csv, users.csv, and a metadata JSON we
+--      do NOT need. Right-click the zip -> Extract, then use ONLY
+--      recommendations.csv. Heads-up: it is ~2 GB (~41M rows), so
+--      the import takes a while and the .db grows to several GB --
+--      the INDEX step below is what keeps queries fast.
 --   2. Open your EXISTING hidden-gems .db file (the one that
 --      already contains games_raw). Do NOT make a new database --
 --      both tables must share one file to be JOIN-able.
