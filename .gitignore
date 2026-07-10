@@ -16,3 +16,6 @@ handoff_bundle/claude-code-handoff.md
 handoff_bundle/portfolio-scoping-kit.jsx
 steam_games.sql
 HANDOFF_*.md
+
+# DB Browser transient journal files
+*.db-journal
