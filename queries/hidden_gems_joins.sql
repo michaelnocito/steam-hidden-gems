@@ -63,6 +63,22 @@
 -- ============================================================
 
 -- ============================================================
+-- CONFIRMED SO FAR (facts we verified before writing queries)
+--   * The recommendations columns are REAL, not assumed -- we read
+--     the file header directly. Exact columns, in order:
+--       app_id, helpful, funny, date, is_recommended, hours,
+--       user_id, review_id
+--   * is_recommended is stored as the lowercase TEXT 'true'/'false'
+--     -- NOT the numbers 1/0. Every query that counts recommends
+--     tests = 'true' for exactly this reason (see Step 4 / limits).
+--   * Snapshot date: the review rows are dated ~August 2024. The
+--     games_raw source is a DIFFERENT snapshot, so the two describe
+--     the same games at different moments -- stated in LIMITATIONS.
+--   * Size: recommendations is ~2 GB / ~41M rows. That is WHY the
+--     index below exists and why the first join can feel slow.
+-- ============================================================
+
+-- ============================================================
 -- PERFORMANCE NOTE (why the first query might feel slow)
 --
 -- games_raw has ~125k rows -- small. recommendations has MILLIONS
