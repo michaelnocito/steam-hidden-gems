@@ -91,18 +91,25 @@ flowchart LR
     F --> G[175 hidden gems<br/>top 25 showcased]
 ```
 
-## Data Source
+## Data Sources
 
-**Steam Games Dataset** by FronkonGames (Kaggle, free):
-https://www.kaggle.com/datasets/fronkongames/steam-games-dataset
+This project uses two free public Kaggle datasets. Neither full data file is
+committed (both exceed GitHub's 100 MB limit); a 500-row sample
+(`handoff_bundle/steam_sample.csv`) shows the shape, and the steps below rebuild
+the database from source.
 
-The dataset contains ~125,000 games with review counts, pricing, ownership
-estimates, playtime, genres, and tags.
+| Dataset | Source | What it provides | Used by |
+|---------|--------|------------------|---------|
+| **Steam Games Dataset** | [FronkonGames (Kaggle)](https://www.kaggle.com/datasets/fronkongames/steam-games-dataset) | ~125,000 games: review counts, pricing, ownership estimates, playtime, genres, tags | Part 1 (`games_raw`) |
+| **Game Recommendations on Steam** | [antonkozyriev (Kaggle)](https://www.kaggle.com/datasets/antonkozyriev/game-recommendations-on-steam) | ~41M player reviews: hours played and thumbs up/down, one row per review | Part 2 (`recommendations`) |
 
-> **Note:** the full dataset (~380 MB CSV / ~480 MB database) is **not** stored
-> in this repo — it exceeds GitHub's 100 MB file limit. A 500-row sample
-> (`handoff_bundle/steam_sample.csv`) is included so you can see the data
-> shape, and the steps below let you rebuild the full database from the source.
+**Dataset 1 note:** the games CSV is ~380 MB (~480 MB as a database).
+
+**Dataset 2 notes:** download the **`recommendations.csv` file only** (it arrives
+in a zip alongside other files you do not need). It is large: **~2 GB / ~41M
+rows**. It joins to the games table on **`app_id = AppID`**, and it is a separate
+**~August 2024 snapshot**, so the two datasets describe the same games at
+slightly different times.
 
 ## Data Cleaning Note: Malformed Header in Source File
 
@@ -204,12 +211,43 @@ wrong. A record can be internally valid yet contradict reality — human validat
 is the last essential filter, and documenting what you find is what makes the
 analysis trustworthy.
 
+## Part 2: Do People Actually Play These Gems? (JOINs)
+
+Part 1 answers "which games *are* hidden gems" from a single table. But a review
+count and a positive percentage cannot tell you whether anyone *keeps playing* a
+game. That information lives in a second dataset, so Part 2 **joins** the 175 gems
+to ~41 million player reviews (hours played, thumbs up/down) to answer a question
+one table cannot: which hidden gems do people actually sink hours into?
+
+The full annotated analysis is in
+[`queries/hidden_gems_joins.sql`](queries/hidden_gems_joins.sql), which walks
+through `INNER JOIN`, aggregation with `GROUP BY`, a reusable `VIEW`, `HAVING`,
+and a `LEFT JOIN`, in the same read-it-aloud teaching style as Part 1. Highlights:
+
+- **The payoff (sleeper hits):** attaching playtime to the gems surfaces titles
+  that are well-rated, cheap, obscure, *and* heavily played. *Tales of Maj'Eyal*
+  ($3.49, 95.1% positive, ~174 average hours) is the poster child. The list skews
+  to **visual novels and deep RPGs/roguelikes** — genres built for long playtime.
+- **The anti-join cross-validated Part 1:** a `LEFT JOIN` listing gems with *no*
+  reviews re-surfaced the exact stale/corrupted records Part 1 flagged (*Portal 2*,
+  *Batman: Arkham City*, plus *Portal*, *Civilization V*, *Trine 2*). Two
+  independent methods pointing at the same bad rows is strong validation.
+- **An honest read:** average hours is a **length** signal, not a **quality** one.
+  Short cozy gems (*A Castle Full of Cats*, ~3 hours) rank low on playtime without
+  being worse — they are short by design, which matches Part 1's finding that gems
+  skew cozy and short.
+- **Documented data quirks:** the review dataset stores its recommend flag as the
+  text `'true'`/`'false'` (not `1`/`0`), and the `hours` column is capped at
+  1000 — both caught, measured, and handled in the file.
+
 ## The Queries Are Written to Teach
 
-The analysis lives in **[`queries/hidden_gems.sql`](queries/hidden_gems.sql)** —
-you can read it right here on GitHub (it renders in the browser; no download
-needed) or open it in DB Browser to run it yourself. It's deliberately written
-as a **learning resource**, not just working code:
+The analysis lives in two files you can read right here on GitHub (they render in
+the browser; no download needed) or open in DB Browser to run yourself:
+**[`queries/hidden_gems.sql`](queries/hidden_gems.sql)** (Part 1) and
+**[`queries/hidden_gems_joins.sql`](queries/hidden_gems_joins.sql)** (Part 2, the
+JOINs). Both are deliberately written as a **learning resource**, not just working
+code:
 
 - **A `WHY` header on every step** — explains the *reason* for the question
   before the SQL, so you follow the thinking, not just the syntax.
