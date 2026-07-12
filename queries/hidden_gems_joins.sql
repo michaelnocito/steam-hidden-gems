@@ -79,6 +79,51 @@
 -- ============================================================
 
 -- ============================================================
+-- CHOOSING SIGNALS: what we USE and what we CUT (and why)
+--
+-- Part 1 taught "filtering the noise" for ROWS. The same discipline
+-- applies to COLUMNS: a table hands you several columns, but not all
+-- of them are trustworthy signals. Deciding which to lean on -- and
+-- being able to DEFEND cutting the rest -- is the analytical work.
+--
+-- The recommendations table gives us these signals per review:
+--
+--   USE:
+--     hours          -- how long the player played. Direct evidence
+--                       of engagement; the core of "do people keep
+--                       PLAYING it?". This is our headline signal.
+--     is_recommended -- the player's thumbs up/down. A clean quality
+--                       vote, and every review has one.
+--
+--   CUT (documented below, not silently dropped):
+--     helpful, funny -- votes OTHER users cast on the review itself.
+--                       We CUT these as analysis signals. Here is
+--                       how we saw it and why the cut is defensible.
+--
+-- HOW WE SAW IT: the first 10 rows showed helpful/funny almost all
+--   0. A peek is not proof, so we did NOT trust the eyeball -- we
+--   asked the WHOLE 41M-row table one aggregate question instead
+--   (see STEP 1b). It measured:
+--     * only ~21% of reviews have ANY helpful vote (so ~79% are 0)
+--     * average helpful = ~3.2, but MAX = 36,212
+--
+-- WHY THE CUT IS DEFENSIBLE:
+--   1. SPARSE -- ~79% of rows are 0, so the column is mostly empty.
+--   2. SKEWED -- a few viral reviews (36k votes) drag the average
+--      far above the typical review (0). An average over data this
+--      lopsided describes almost none of the actual reviews.
+--   3. WRONG SUBJECT -- helpful/funny measure how good the REVIEW
+--      TEXT is, not how good the GAME is. They are a signal about
+--      writing, not about the product we are ranking.
+--   Any one of these is a reason to be cautious; together they make
+--   helpful/funny unfit as a quality signal for THIS question.
+--
+-- THE LESSON (same as Part 1): every column you leave OUT is a
+--   decision. Look, measure instead of guess, then state the cut
+--   and the reason -- so no one wonders whether you just missed it.
+-- ============================================================
+
+-- ============================================================
 -- PERFORMANCE NOTE (why the first query might feel slow)
 --
 -- games_raw has ~125k rows -- small. recommendations has MILLIONS
@@ -136,14 +181,50 @@ CREATE INDEX IF NOT EXISTS idx_rec_appid ON recommendations(app_id);
 
 -- ============================================================
 -- STEP 1: Peek at the new table
--- WHY: Before joining anything, look at real rows -- confirm the
---      column names (app_id, is_recommended, hours) and see how
---      is_recommended is stored (the text 'true'/'false', not 1/0,
---      in this dataset -- worth knowing before we filter on it).
+-- WHY: Before joining anything, look at real rows first. Confirm
+--      the column names we will rely on (app_id, is_recommended,
+--      hours) and see HOW is_recommended is stored -- in this
+--      dataset it is the text 'true'/'false', not 1/0, which
+--      decides how we filter on it later.
 -- ============================================================
---SELECT ALL columns  FROM the recommendations table  first 10 rows
+--SELECT every column (* means "all columns")
+--FROM the recommendations table
+--LIMIT the output to the first 10 rows (just a peek, not a sample)
 SELECT * FROM recommendations
 LIMIT 10;
+
+
+-- ============================================================
+-- STEP 1b: Measure the sparse columns instead of eyeballing them
+-- WHY: The peek in STEP 1 showed helpful/funny almost all 0. But a
+--      peek only shows the TOP of the file, not a fair sample -- on
+--      41M rows you judge a column by asking the WHOLE table one
+--      aggregate question, not by scrolling more rows. This measures
+--      how empty and how skewed "helpful" really is, so the choice
+--      to CUT it (see "CHOOSING SIGNALS" above) rests on evidence.
+-- RESULTS (our run):  ~21.12% of reviews have any helpful vote,
+--                     average helpful = 3.2, MAX helpful = 36,212.
+--                     -> mostly 0, with a few viral outliers = a
+--                        sparse, skewed column we do not rank on.
+-- ============================================================
+--SELECT three CALCULATED whole-table numbers:
+--   pct_with_any_helpful = what % of reviews have helpful > 0
+--     CASE WHEN helpful > 0 THEN 1 ELSE 0 END = write 1 if the row
+--        has any votes, else 0 (a yes/no turned into a number)
+--     SUM(...)   = add those 1s up = how many rows had votes
+--     COUNT(*)   = count every row (* means "every row")
+--     SUM / COUNT * 100.0 = share of rows with votes, as a percent
+--        (the .0 forces decimal math, not whole-number division)
+--     ROUND(..., 2) = round to 2 decimal places
+--     AS pct_with_any_helpful = name (alias) the column
+--   max_helpful = MAX(helpful) = the biggest single value (tail top)
+--   avg_helpful = ROUND(AVG(helpful), 2) = the average, to 2 decimals
+--FROM the recommendations table (no LIMIT -- we want ALL rows)
+SELECT
+  ROUND(100.0 * SUM(CASE WHEN helpful > 0 THEN 1 ELSE 0 END) / COUNT(*), 2) AS pct_with_any_helpful,
+  MAX(helpful) AS max_helpful,
+  ROUND(AVG(helpful), 2) AS avg_helpful
+FROM recommendations;
 
 
 -- ============================================================
