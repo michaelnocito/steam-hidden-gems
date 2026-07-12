@@ -455,6 +455,17 @@ ORDER BY avg_hours DESC;
 --      as Part 1's review floor: an average over 3 reviews is not a
 --      trustworthy number. Set from judgment, stated openly.
 --
+--   F. HOURS IS CAPPED AT 1000 -- we spotted it in STEP 3: The
+--      Witcher 3's top rows marched 999.9, 999.8, 999.7... and
+--      MAX(hours) across the whole table is exactly 1000.0. So any
+--      player past ~1000 hours is pinned to the ceiling, which pulls
+--      AVG(hours) DOWN for very "sticky" games. We MEASURED the
+--      blast radius before worrying: only ~3,024 rows (0.01%) sit at
+--      the cap, and it bites hardest on blockbusters with swarms of
+--      mega-players -- NOT on our low-ownership gems, which rarely
+--      have them. So we note it and move on. (Lesson: notice the
+--      oddity, measure it, size the concern -- don't panic OR ignore.)
+--
 --   PRINCIPLE (unchanged from Part 1): a join makes it easy to
 --   combine data that was never meant to be combined. That power is
 --   exactly why you must state where the two sources came from and
