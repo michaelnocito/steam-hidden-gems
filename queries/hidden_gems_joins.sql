@@ -422,6 +422,33 @@ LEFT JOIN recommendations AS r ON g.AppID = r.app_id
 WHERE r.app_id IS NULL
 ORDER BY g.pct_positive DESC;
 
+-- ------------------------------------------------------------
+-- WHAT THIS REVEALED (our run) -- the anti-join earns its keep:
+--   ~57 of the 175 gems (about a third) have NO reviews here, which
+--   lines up with the ~29% match rate from STEP 2. So the playtime
+--   story honestly covers ~two-thirds of the gems, and this query
+--   NAMES the third it can't -- instead of quietly dropping them.
+--
+--   * IT RE-CAUGHT OUR PART-1 ARTIFACTS: Portal 2 and Batman: Arkham
+--     City -- the stale/corrupted records Part 1 flagged -- appear
+--     here, alongside Portal, Batman: Arkham Asylum, Civilization V,
+--     and Trine 2. These are mainstream blockbusters that only
+--     reached a "hidden gems" list via bad owner/price data. The
+--     clean review dataset has no matching low-profile entry, so the
+--     anti-join surfaces them AGAIN from a totally different angle.
+--     Two independent methods fingering the same bad rows is about
+--     as strong as validation gets.
+--   * TOO NEW FOR THE SNAPSHOT: recent gems (The Roottrees are Dead,
+--     Until Then, UFO 50, ANTONBLAST, Cobalt Core, Rift of the
+--     NecroDancer) are absent because the reviews are ~Aug 2024 --
+--     the "two snapshots" limitation made concrete.
+--   * GENUINELY UNCOVERED: small/niche titles the reviews set never
+--     sampled.
+--   LESSON: a LEFT JOIN's NULLs are not emptiness to hide -- they
+--   are findings. Absence, named, can confirm a separate result and
+--   expose the exact boundary of what your data can speak to.
+-- ------------------------------------------------------------
+
 
 -- ============================================================
 -- STEP 8: The two views, side by side -- rating vs. playtime
