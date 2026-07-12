@@ -18,6 +18,30 @@
 -- ============================================================
 
 -- ============================================================
+-- HOW TO STUDY THIS FILE (the most important step for retention)
+-- Don't just read or copy-paste. RETYPE it, section by section:
+--   1. Open this file on one side, a blank query tab on the other.
+--   2. Type each section by hand -- the plain-English comment FIRST,
+--      then the SQL under it. (Typing the comment primes the idea;
+--      the formula then lands as its answer.)
+--   3. RUN each section before moving on; watch the result match
+--      what the comment predicted.
+--   4. LEVEL UP: on a second pass, hide the SQL and write each query
+--      from the comment alone, then check it.
+-- WHY IT WORKS (real learning science):
+--   * Generation effect -- producing beats reading (Slamecka & Graf
+--     1978; ~d=0.40).
+--   * Retrieval practice -- recalling beats re-reading, 61% vs 40%
+--     at one week (Roediger & Karpicke 2006). That is why step 4 is
+--     the highest-value move.
+--   * Plus: immediate feedback from running each part, and the motor
+--     fluency of typing real SQL (parens, quotes, >=, keywords).
+--   You also end up able to TALK about the code -- explain each
+--   filter and threshold -- because you generated it, not watched it.
+--   Full write-up: see "How to Actually Learn From This" in README.
+-- ============================================================
+
+-- ============================================================
 -- THE DATA-QUALITY STORY: a broken header in the source file
 --
 -- SYMPTOM: An early sanity check -- MAX(Positive) -- returned a

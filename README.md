@@ -229,6 +229,65 @@ If you're learning SQL, reading the file top to bottom walks you through a real
 analysis the way it actually unfolds: verify the data, explore it, measure
 quality, filter noise, tune thresholds, and validate the result.
 
+## 🧠 How to Actually Learn From This (the most important part)
+
+Reading this file teaches you a little. **Retyping it teaches you a lot.** If you
+want the SQL to stick, do not just read the queries or copy-paste them. Do this
+instead, and treat it as the single most important step in the whole project:
+
+### The method
+
+1. **Open the finished file on one side of your screen, a blank query tab on the
+   other.** The file is already split into small comment + code sections (use the
+   collapse arrows in your editor to take them one at a time).
+2. **Retype each section by hand, comments and all.** Type the plain-English
+   "read out loud" comment first, then the SQL beneath it.
+3. **Run each section before moving on.** Watch the result match what the comment
+   said it would do.
+4. **Level up (do a second pass):** once through, hide the SQL and, reading only
+   the plain-English comment, try to write the query yourself. Then check it
+   against the original.
+
+### Why typing the comment first works
+
+When you type the comment (`--WHERE at least 2,000 reviews`) *before* the line of
+SQL, you prime the idea in plain language. Then when you type the formula, it is
+no longer a wall of symbols: you already said what it should do, so the syntax
+lands as the answer to a question you just asked yourself. Comment primes,
+formula confirms.
+
+### The learning science (this is real, not motivation)
+
+- **The generation effect:** information you *produce* is remembered better than
+  information you *read*. Slamecka & Graf (1978) showed this across five
+  experiments; generated material beats read material on recall and recognition,
+  with an effect size around *d* = 0.40, and it holds across delays. Typing the
+  comment and formula is producing, not skimming.
+- **Retrieval practice (why the second pass matters most):** recalling something
+  from memory beats re-reading it, by a wide margin. Roediger & Karpicke (2006)
+  found that students who practiced *retrieval* remembered **61%** one week
+  later, versus **40%** for students who just re-read. That gap is why step 4
+  (writing the query from the comment alone) is the highest-value move here.
+- **Worked-example effect / cognitive load:** for a beginner, studying a complete
+  worked example and reproducing it is more efficient than struggling from a
+  blank page. The small comment + code sections keep each chunk inside working
+  memory instead of overwhelming it.
+- **Immediate feedback:** running each section right after you type it confirms
+  the correct version instantly, which strengthens the memory of the right way.
+
+### The bonus you feel later
+
+Typing real SQL over and over builds the muscle memory for the specific keys and
+combinations analysts live in: parentheses, quotes, `>=`, `_`, keyword spellings.
+The syntax stops being friction and becomes automatic. And because you *generated*
+the analysis rather than watching it, you can actually talk about it: explain why
+each filter exists, defend each threshold, and answer questions about the code in
+an interview. You cannot get that from copy-paste.
+
+> **The one-line version:** read it once, retype it section by section running as
+> you go, then close the file and rebuild a few queries from the comments alone.
+> That last step is where it truly sticks.
+
 ## How to Build the Database (step by step)
 
 New to databases? This section assumes **zero prior setup**. By the end you'll
