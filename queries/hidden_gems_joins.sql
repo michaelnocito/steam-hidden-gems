@@ -379,6 +379,26 @@ HAVING COUNT(r.review_id) >= 50
 ORDER BY avg_hours DESC
 LIMIT 25;
 
+-- ------------------------------------------------------------
+-- WHAT THIS REVEALED (our run) -- the payoff, read as findings:
+--   * POSTER CHILD: Tales of Maj'Eyal -- $3.49, 95.1% positive,
+--     2,498 reviews, ~174 avg hours. A cheap, obscure roguelike a
+--     devoted crowd sinks weekends into. That single row IS the
+--     thesis of Part 2: well-rated + obscure + genuinely sticky.
+--   * THE GENRES MAKE SENSE: the list is dominated by VISUAL NOVELS
+--     (Umineko, Riddle Joker, Summer Pockets, Muv-Luv, STEINS;GATE 0,
+--     NEKOPARA) and DEEP RPGs/ROGUELIKES (Trails in the Sky SC, Bug
+--     Fables, Epic Battle Fantasy 4) -- genres built for long
+--     playtime, so high avg hours is a real signal, not an artifact.
+--   * THE FLOOR WORKED: smallest sample here is ~99 reviews. None of
+--     Step 4's 1-review junk ("Angry Cat", 5 reviews) survived,
+--     because HAVING COUNT >= 50 removed it.
+--   * CONTRAST WITH STEP 4: there, raw avg-hours put Dota 2 / CS2 on
+--     top at ~429 hours -- but those are mega-popular, the OPPOSITE
+--     of hidden. Filtering to the gems VIEW first is what turns
+--     "most-played games" into "most-played SLEEPER games".
+-- ------------------------------------------------------------
+
 
 -- ============================================================
 -- STEP 7: LEFT JOIN -- which gems are MISSING from the review data?
