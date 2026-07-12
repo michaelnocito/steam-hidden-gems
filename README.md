@@ -231,62 +231,85 @@ quality, filter noise, tune thresholds, and validate the result.
 
 ## 🧠 How to Actually Learn From This (the most important part)
 
-Reading this file teaches you a little. **Retyping it teaches you a lot.** If you
-want the SQL to stick, do not just read the queries or copy-paste them. Do this
-instead, and treat it as the single most important step in the whole project:
+Reading this file teaches you a little. The real trick is smaller and more focused
+than "retype everything": **rehearse the plain-English "read out loud" comments
+until you can say them out loud smoothly.** When the narration flows off your
+tongue with no stumbling, you understand what the query does, and the SQL beneath
+it stops looking like a wall of symbols. Treat this as the single most important
+step in the whole project.
 
-### The method
+### First, an important distinction: learning vs. portfolio
 
-1. **Open the finished file on one side of your screen, a blank query tab on the
-   other.** The file is already split into small comment + code sections (use the
-   collapse arrows in your editor to take them one at a time).
-2. **Retype each section by hand, comments and all.** Type the plain-English
-   "read out loud" comment first, then the SQL beneath it.
-3. **Run each section before moving on.** Watch the result match what the comment
-   said it would do.
-4. **Level up (do a second pass):** once through, hide the SQL and, reading only
-   the plain-English comment, try to write the query yourself. Then check it
-   against the original.
+This file is commented wall-to-wall **on purpose, as a learning scaffold.** That
+is *not* how you comment professional code, and you should know the difference:
 
-### Why typing the comment first works
+- **If you are LEARNING:** keep the verbose "read out loud" comments and use them
+  the way described below. They are training wheels, and training wheels are the
+  point right now.
+- **If this is PORTFOLIO or INDUSTRY work:** strip the narration and leave only
+  **industry-standard comments** — a short header saying what the query is for,
+  and a note on anything non-obvious (a tricky filter, a data quirk, why a
+  threshold is what it is). Clear SQL and good column names should carry the
+  rest. In professional code, a comment on every obvious line is actually a
+  *red flag*: it signals the author did not trust the reader (or the code) to
+  speak for itself.
 
-When you type the comment (`--WHERE at least 2,000 reviews`) *before* the line of
-SQL, you prime the idea in plain language. Then when you type the formula, it is
-no longer a wall of symbols: you already said what it should do, so the syntax
-lands as the answer to a question you just asked yourself. Comment primes,
-formula confirms.
+So: learn with the training wheels on, then take them off for anything you show
+an employer. Knowing when to comment heavily and when not to is itself a sign of
+an experienced analyst.
+
+### The method (learning mode)
+
+1. **Open the finished file and work one small section at a time** (use the
+   collapse arrows in your editor to take them one by one).
+2. **Type and quietly say the "read out loud" comment for that section** —
+   `--SELECT the game's name`, `--WHERE at least 2,000 reviews`, and so on.
+3. **Repeat that section until you can read the narration out loud SMOOTHLY,**
+   start to finish, without stumbling. That smoothness is your signal that it
+   clicked. Stumbling means there is still a gap — say it again.
+4. **Then look at the SQL underneath and run it.** Because you can already say
+   what it should do, the syntax reads as the answer to a sentence you already
+   own.
+5. **Level up:** hide the SQL and rebuild the query from the comment alone, then
+   check it.
+
+### Why "smooth out loud" is the target
+
+Saying the step in your own words is you explaining the query to yourself. If you
+can narrate it smoothly, you genuinely understand it; if you trip over it, you
+have found the exact spot you do not understand yet. So reading it out loud is not
+a warm-up — it is a live comprehension test you run on yourself, one small chunk
+at a time.
 
 ### The learning science (this is real, not motivation)
 
+- **The self-explanation effect:** learners who explain each step to themselves in
+  plain language understand more deeply and transfer better than those who just
+  read. Narrating the comment out loud is exactly this — you are explaining the
+  query to yourself before you trust the syntax.
 - **The generation effect:** information you *produce* is remembered better than
   information you *read*. Slamecka & Graf (1978) showed this across five
-  experiments; generated material beats read material on recall and recognition,
-  with an effect size around *d* = 0.40, and it holds across delays. Typing the
-  comment and formula is producing, not skimming.
-- **Retrieval practice (why the second pass matters most):** recalling something
-  from memory beats re-reading it, by a wide margin. Roediger & Karpicke (2006)
-  found that students who practiced *retrieval* remembered **61%** one week
-  later, versus **40%** for students who just re-read. That gap is why step 4
-  (writing the query from the comment alone) is the highest-value move here.
-- **Worked-example effect / cognitive load:** for a beginner, studying a complete
-  worked example and reproducing it is more efficient than struggling from a
-  blank page. The small comment + code sections keep each chunk inside working
-  memory instead of overwhelming it.
-- **Immediate feedback:** running each section right after you type it confirms
-  the correct version instantly, which strengthens the memory of the right way.
+  experiments (generated beats read, effect size around *d* = 0.40, holding across
+  delays). Producing the narration is producing, not skimming.
+- **Retrieval practice (why the last step matters most):** recalling something
+  from memory beats re-reading it by a wide margin. Roediger & Karpicke (2006)
+  found students who practiced *retrieval* remembered **61%** one week later,
+  versus **40%** for those who just re-read. That gap is why step 5 — rebuilding
+  the query from the comment alone — is the highest-value move.
+- **Fluency as a signal:** smooth, effortless narration is a reliable sign the
+  idea has become yours; halting narration reliably flags what to revisit.
 
 ### The bonus you feel later
 
-Typing real SQL over and over builds the muscle memory for the specific keys and
-combinations analysts live in: parentheses, quotes, `>=`, `_`, keyword spellings.
-The syntax stops being friction and becomes automatic. And because you *generated*
-the analysis rather than watching it, you can actually talk about it: explain why
-each filter exists, defend each threshold, and answer questions about the code in
-an interview. You cannot get that from copy-paste.
+Once you can narrate the analysis, you can *talk* about it: explain why each filter
+exists, defend each threshold, and answer questions about the code in an interview.
+That is worth far more than being able to copy-paste it. (And when you do type the
+SQL to run it, you also pick up the muscle memory for the keys analysts live in —
+parentheses, quotes, `>=`, keyword spellings — so the syntax stops being friction.)
 
-> **The one-line version:** read it once, retype it section by section running as
-> you go, then close the file and rebuild a few queries from the comments alone.
-> That last step is where it truly sticks.
+> **The one-line version:** rehearse the read-out-loud comments until they flow
+> smoothly, then read the SQL as their answer, then rebuild a few queries from the
+> comments alone. Smooth narration first, memory last — that is where it sticks.
 
 ## How to Build the Database (step by step)
 

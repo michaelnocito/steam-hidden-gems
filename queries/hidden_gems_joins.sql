@@ -26,27 +26,33 @@
 -- ============================================================
 
 -- ============================================================
--- HOW TO STUDY THIS FILE (the most important step for retention)
--- Don't just read or copy-paste. RETYPE it, section by section:
---   1. Open this file on one side, a blank query tab on the other.
---   2. Type each section by hand -- the plain-English comment FIRST,
---      then the SQL under it. (Typing the comment primes the idea;
---      the formula then lands as its answer.)
---   3. RUN each section before moving on; watch the result match
---      what the comment predicted.
---   4. LEVEL UP: on a second pass, hide the SQL and write each query
---      from the comment alone, then check it.
+-- HOW TO STUDY THIS FILE (most important step -- IF you're learning)
+-- These wall-to-wall comments are a LEARNING SCAFFOLD, not how you
+-- comment real work. Two modes:
+--   * LEARNING: keep the "read out loud" comments and rehearse them
+--     (method below).
+--   * PORTFOLIO / INDUSTRY: strip them to standard LIGHT comments --
+--     intent + anything non-obvious. A comment on every obvious line
+--     is a red flag in professional code.
+--
+-- LEARNING METHOD -- rehearse, don't just retype:
+--   1. Take one small section at a time.
+--   2. Type and quietly SAY the read-out-loud comment
+--      (--SELECT the game's name, --WHERE at least 2,000 reviews...).
+--   3. Repeat the section until you can say the narration out loud
+--      SMOOTHLY, no stumbling -- that fluency means it clicked;
+--      stumbling shows the exact gap to revisit.
+--   4. THEN read/run the SQL; it now reads as the answer to a
+--      sentence you can already say.
+--   5. LEVEL UP: hide the SQL and rebuild the query from the comment.
 -- WHY IT WORKS (real learning science):
+--   * Self-explanation -- narrating a step in your own words deepens
+--     understanding (smooth = you get it; halting = the gap).
 --   * Generation effect -- producing beats reading (Slamecka & Graf
 --     1978; ~d=0.40).
 --   * Retrieval practice -- recalling beats re-reading, 61% vs 40%
---     at one week (Roediger & Karpicke 2006). That is why step 4 is
---     the highest-value move.
---   * Plus: immediate feedback from running each part, and the motor
---     fluency of typing real SQL (parens, quotes, >=, keywords).
---   You also end up able to TALK about the code -- explain each
---   filter and threshold -- because you generated it, not watched it.
---   Full write-up: see "How to Actually Learn From This" in README.
+--     at one week (Roediger & Karpicke 2006) -- why step 5 matters.
+--   Full write-up: "How to Actually Learn From This" in README.
 -- ============================================================
 
 -- ============================================================
