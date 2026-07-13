@@ -490,6 +490,9 @@ each is published.)*
 Built by **Michael Nocito**, data analyst. This project is part of a broader set
 of analyst learning tools and portfolio work:
 
+- 🎬 **[Hidden Gem Movies](https://github.com/michaelnocito/streaming-hidden-gems)** — the
+  companion analysis: the same hunt across IMDb's 12.6M-title dataset
+  ([browse the list](https://michaelnocito.github.io/streaming-hidden-gems-list/)).
 - 🧰 **[Analyst Prep Kit](https://michaelnocito.github.io/analyst-prep-kit/)** — hands-on
   Excel, SQL, Python, Power BI, and Tableau practice kits.
 - 🌐 **[michaelnocito.github.io](https://michaelnocito.github.io)** — portfolio & more projects.
