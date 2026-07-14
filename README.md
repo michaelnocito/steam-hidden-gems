@@ -190,6 +190,11 @@ player who can actually understand it.
 
 ## Validation
 
+Checks like these are the working end of exploratory data analysis — the
+discipline of looking before trusting. For the why behind the habit (and the
+classic research that proves summary statistics can lie), see
+[Why Exploratory Data Analysis Matters](https://michaelnocito.github.io/analyst-prep-kit/guides/exploratory-data-analysis/).
+
 Results were checked four ways before being trusted:
 
 1. **Known-record check** — verified the column fix against a game whose true
