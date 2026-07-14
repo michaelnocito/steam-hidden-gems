@@ -349,6 +349,13 @@ parentheses, quotes, `>=`, keyword spellings — so the syntax stops being frict
 > smoothly, then read the SQL as their answer, then rebuild a few queries from the
 > comments alone. Smooth narration first, memory last — that is where it sticks.
 
+## Then Make It Yours: Extend the Project
+
+The final step of learning from this repo is changing it. **[EXTEND_THIS_PROJECT.md](EXTEND_THIS_PROJECT.md)**
+lists ten ways to push the analysis further — gems by genre, by language, by
+platform, by price band, stricter thresholds — every one of them doable with
+only the SQL already taught here. Predict, run, compare. That's where it sticks.
+
 ## How to Build the Database (step by step)
 
 New to databases? This section assumes **zero prior setup**. By the end you'll
