@@ -10,7 +10,7 @@
 -- This analysis is written to be followed by someone learning
 -- SQL and data analysis. Each query has:
 --   WHY  -- the reason the question is being asked
---   a plain-English "read out loud" of what the SQL does
+--   a "read out loud" of what the SQL does, in everyday words
 -- The sections below document HOW the data was cleaned, HOW we
 -- filtered out noise, HOW we scoped the question, and HOW we
 -- validated the results -- the reasoning matters as much as the

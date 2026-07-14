@@ -21,7 +21,7 @@
 --
 -- Like Part 1, every query has:
 --   WHY  -- the reason the question is being asked
---   a plain-English "read out loud" of what the SQL does
+--   a "read out loud" of what the SQL does, in everyday words
 -- The reasoning matters as much as the final query.
 -- ============================================================
 

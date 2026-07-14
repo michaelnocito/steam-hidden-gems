@@ -275,7 +275,7 @@ quality, filter noise, tune thresholds, and validate the result.
 ## 🧠 How to Actually Learn From This (the most important part)
 
 Reading this file teaches you a little. The real trick is smaller and more focused
-than "retype everything": **rehearse the plain-English "read out loud" comments
+than "retype everything": **rehearse the "read out loud" comments
 until you can say them out loud smoothly.** When the narration flows off your
 tongue with no stumbling, you understand what the query does, and the SQL beneath
 it stops looking like a wall of symbols. Treat this as the single most important

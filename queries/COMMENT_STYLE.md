@@ -35,7 +35,7 @@ reason for asking the question (not what the SQL does — the reason it exists).
 
 ### 2. Read-out-loud block ABOVE the query
 One line per SQL clause, in the exact order the clauses appear, each line
-starting with that clause keyword. This is a plain-English paraphrase a beginner
+starting with that clause keyword. This is an everyday-words paraphrase a beginner
 can read top to bottom:
 
 ```
@@ -121,7 +121,7 @@ LIMIT 25;
 - **Read a nested calculation inside-out** when explaining it (innermost
   function first), but still as sub-bullets under SELECT, never inline.
 - **Never put comments inside the query body.** The query stays clean.
-- **Voice:** plain English, calm, beginner-facing. No em-dashes in prose.
+- **Voice:** everyday words, calm, beginner-facing. No em-dashes in prose. Never the phrase "plain English".
 
 ---
 
