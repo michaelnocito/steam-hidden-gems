@@ -12,10 +12,11 @@ handoff_bundle/steam_clean.csv
 handoff_bundle/games.json
 
 # Internal scaffolding -- not part of the public deliverable
-handoff_bundle/claude-code-handoff.md
-handoff_bundle/portfolio-scoping-kit.jsx
+handoff_bundle/*.md
+handoff_bundle/*.jsx
 steam_games.sql
 HANDOFF_*.md
+tableau/
 
 # DB Browser transient journal files
 *.db-journal
