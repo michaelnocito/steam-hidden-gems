@@ -17,6 +17,7 @@ handoff_bundle/*.jsx
 steam_games.sql
 HANDOFF_*.md
 tableau/
+powerbi/
 
 # DB Browser transient journal files
 *.db-journal
