@@ -133,3 +133,17 @@ LIMIT 25;
 - Do NOT hand over bare SQL with no comments, ever.
 - Do NOT skip the WHY header.
 ```
+
+---
+
+## Where this format is explained in full
+
+This file is the working canon for this repo. The reasoning behind the format,
+with a full before-and-after, an anatomy diagram, the learning-science research
+it rests on, and a cheat sheet, is written up here:
+
+**[How to Comment SQL So It Teaches](https://michaelnocito.github.io/analyst-prep-kit/guides/sql-teaching-comments/)**
+
+If you would rather not hand-write the blocks, the prompts that get any AI
+assistant to produce this format on demand are packaged here:
+[The SQL Teaching-Comment Prompt Pack](https://michaelnocito.gumroad.com/l/sql-prompt-pack) ($7).
