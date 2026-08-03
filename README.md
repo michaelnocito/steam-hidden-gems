@@ -175,6 +175,17 @@ combination until the list was a credible, browsable size:
 low ownership tier (under ~200k, excluding `0 - 0`). **175 games qualify**; the
 analysis showcases the top 25 by approval rating.
 
+**Why the published list shows 166, not 175.** The filter is arithmetic, and
+arithmetic cannot tell a small game from a mislabelled famous one. A final
+famous-name scan caught nine rows the internal signals had missed: seven sat in
+the unreliable `0 - 20000` owner bucket while being mega-hits (Portal, Portal 2,
+Civilization V, Trine 2 among them), and two were duplicate `Batman: Arkham` rows
+whose correctly-labelled 2M-owner versions had already been excluded. All nine
+were removed, leaving the **166** games on the
+[published list](https://michaelnocito.github.io/steam-hidden-gems-list/). Owner
+estimates in this dataset are unreliable in general, which is the limitation
+behind the whole exercise.
+
 ## Scope & Assumptions
 
 Every filter left *out* is also a decision. This analysis is **language-agnostic**
