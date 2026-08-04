@@ -1,0 +1,152 @@
+<meta charset="utf-8">
+<title>Steam Hidden Gems - Excel Dashboard Preview</title>
+<style>
+  :root{--ink:#1c2530;--muted:#6b7684;--line:#e3e8ee;--card:#fff;--bg:#f4f6f9;
+        --gem:#e8663c;--other:#c3ccd6;--accent:#1a6ea8;}
+  *{box-sizing:border-box;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  body{margin:0;background:var(--bg);color:var(--ink);padding:24px}
+  .note{max-width:1180px;margin:0 auto 16px;background:#fff7ed;border:1px solid #f4cfa8;
+        border-radius:10px;padding:12px 16px;font-size:13px;color:#7a4a25}
+  .wrap{max-width:1180px;margin:0 auto;background:var(--card);border:1px solid var(--line);
+        border-radius:14px;padding:22px 24px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h1{font-size:22px;margin:0 0 2px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:18px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .kpi{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .kpi .n{font-size:26px;font-weight:700}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:2px}
+  .grid{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
+  .panel{border:1px solid var(--line);border-radius:10px;padding:14px}
+  .panel h3{margin:0 0 3px;font-size:14px}
+  .panel .dek{font-size:12px;color:var(--muted);margin-bottom:12px}
+  .panel .cap{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.5}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .bar{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
+  .bar .lab{width:82px;color:var(--muted)}
+  .bar .track{flex:1;background:var(--bg);border-radius:4px;overflow:hidden;height:16px}
+  .bar .fill{height:100%;background:var(--accent);border-radius:4px}
+  .bar .v{width:52px;text-align:right;font-variant-numeric:tabular-nums}
+  .bar .n2{width:64px;text-align:right;font-size:11px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .legend{font-size:12px;color:var(--muted);display:flex;gap:16px;margin-bottom:10px}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+  .slicers{display:flex;gap:10px;align-items:center;margin-bottom:16px;font-size:12px;flex-wrap:wrap}
+  .slicers .t{color:var(--muted)}
+  .chip{border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:4px 10px}
+  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .gap{display:flex;align-items:center;gap:10px;margin:10px 0;font-size:13px}
+  .gap .who{width:104px}
+  .gap .track{flex:1;background:var(--bg);border-radius:4px;height:26px;overflow:hidden}
+  .gap .fill{height:100%;border-radius:4px}
+  .gap .v{width:74px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+  .pull{background:#fdf3ee;border-left:3px solid var(--gem);padding:9px 12px;border-radius:0 6px 6px 0;
+        font-size:12.5px;margin-top:12px;line-height:1.55}
+  .match th{font-weight:600}
+  .match td.same{color:var(--muted)}
+</style>
+
+<div class="note"><b>This is a design preview, not the real Excel workbook.</b>
+It shows the layout and the actual numbers from your data so you can review the whole
+thing before building it in Excel. Follow BUILD_GUIDE_SIMPLE.md to recreate this in
+Excel (the real workbook, with PivotTables, slicers, and formulas).</div>
+
+<div class="wrap">
+  <h1>Steam Hidden Gems</h1>
+  <div class="sub">765 games on Steam are genuinely loved (95%+ positive, 2,000+ reviews).
+    Only 175 of them stayed small. <b>Why do some loved games get found and others don't?</b></div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">82,956</div><div class="l">Games with reviews</div></div>
+    <div class="kpi"><div class="n">765</div><div class="l">Genuinely loved games</div></div>
+    <div class="kpi"><div class="n">175</div><div class="l">Stayed hidden</div></div>
+    <div class="kpi"><div class="n">5x</div><div class="l">Audience gap between them</div></div>
+  </div>
+
+  <div class="slicers"><span class="t">Slicers:</span>
+    <span class="chip on">All genres</span><span class="chip">Adventure</span>
+    <span class="chip">Action</span><span class="chip">Casual</span>
+    <span class="t" style="margin-left:8px">|</span>
+    <span class="chip on">All prices</span><span class="chip">$0&ndash;5</span>
+    <span class="chip">$5&ndash;10</span>
+    <span class="t" style="margin-left:6px">(clickable filter buttons in the real workbook)</span>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3>The discovery gap</h3>
+      <div class="dek">Median owners, among the 765 games players rate 95%+ positive</div>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--gem)"></span>Stayed hidden (175 games)</span>
+        <span><span class="dot" style="background:var(--accent)"></span>Broke out (590 games)</span>
+      </div>
+
+      <div class="gap"><span class="who">Stayed hidden</span>
+        <span class="track"><span class="fill" style="width:20%;background:var(--gem)"></span></span>
+        <span class="v">150,000</span></div>
+      <div class="gap"><span class="who">Broke out</span>
+        <span class="track"><span class="fill" style="width:100%;background:var(--accent)"></span></span>
+        <span class="v">750,000</span></div>
+
+      <table class="match" style="margin-top:14px">
+        <tr><th>But they're matched on everything else</th>
+            <th class="num">Hidden</th><th class="num">Broke out</th></tr>
+        <tr><td>Median % positive</td><td class="num same">97.0</td><td class="num same">96.5</td></tr>
+        <tr><td>Median price</td><td class="num same">$5.99</td><td class="num same">$4.99</td></tr>
+        <tr><td>Median playtime (hrs)</td><td class="num same">4.9</td><td class="num same">5.1</td></tr>
+      </table>
+
+      <div class="pull">Games that stayed hidden aren't cheaper, shorter, or worse reviewed
+        than the ones that broke out. They're the same product with one fifth the audience.
+        Quality doesn't predict reach.</div>
+    </div>
+
+    <div class="panel">
+      <h3>Top hidden gems</h3>
+      <div class="dek">The 175, ranked by player approval</div>
+      <table>
+        <tr><th>Game</th><th class="num">% Pos</th><th class="num">Reviews</th><th class="num">Price</th></tr>
+        <tr><td>A Castle Full of Cats</td><td class="num">99.4</td><td class="num">4,009</td><td class="num">$2.39</td></tr>
+        <tr><td>The Upturned</td><td class="num">99.3</td><td class="num">2,364</td><td class="num">$5.99</td></tr>
+        <tr><td>Patrick's Parabox</td><td class="num">99.2</td><td class="num">4,437</td><td class="num">$9.99</td></tr>
+        <tr><td>Smushi Come Home</td><td class="num">99.1</td><td class="num">2,191</td><td class="num">$9.99</td></tr>
+        <tr><td>Lil Gator Game</td><td class="num">99.0</td><td class="num">4,691</td><td class="num">$9.99</td></tr>
+        <tr><td>Buy a Croquette!</td><td class="num">99.0</td><td class="num">4,355</td><td class="num">Free</td></tr>
+        <tr><td>A Building Full of Cats</td><td class="num">99.0</td><td class="num">3,969</td><td class="num">$0.99</td></tr>
+        <tr><td>Threefold Recital</td><td class="num">98.9</td><td class="num">3,436</td><td class="num">$11.99</td></tr>
+      </table>
+      <div class="cap">Data bars on % Pos via conditional formatting.
+        The genre and price slicers filter this list.</div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <div class="panel">
+      <h3>Which genres actually produce gems</h3>
+      <div class="dek">Share of proven games (2,000+ reviews) that stayed hidden gems</div>
+      <div class="bar"><span class="lab">Adventure</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">8.1%</span><span class="n2">75 of 924</span></div>
+      <div class="bar"><span class="lab">Casual</span><span class="track"><span class="fill" style="width:89%"></span></span><span class="v">7.2%</span><span class="n2">26 of 363</span></div>
+      <div class="bar"><span class="lab">Indie</span><span class="track"><span class="fill" style="width:47%"></span></span><span class="v">3.8%</span><span class="n2">14 of 366</span></div>
+      <div class="bar"><span class="lab">RPG</span><span class="track"><span class="fill" style="width:27%"></span></span><span class="v">2.2%</span><span class="n2">4 of 180</span></div>
+      <div class="bar"><span class="lab">Action</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="v">2.0%</span><span class="n2">51 of 2,564</span></div>
+      <div class="bar"><span class="lab">Simulation</span><span class="track"><span class="fill" style="width:12%"></span></span><span class="v">1.0%</span><span class="n2">2 of 194</span></div>
+      <div class="bar"><span class="lab">Strategy</span><span class="track"><span class="fill" style="width:10%"></span></span><span class="v">0.8%</span><span class="n2">1 of 122</span></div>
+      <div class="pull">Counted raw, Action looks like the second-best genre with 51 gems.
+        As a rate it drops to fifth. Action is simply the biggest category on Steam,
+        not the one most likely to hide something good.</div>
+    </div>
+    <div class="panel">
+      <h3>Gems by price</h3>
+      <div class="dek">Where the 175 hidden gems sit on price</div>
+      <div class="bar"><span class="lab">Free</span><span class="track"><span class="fill" style="width:19%"></span></span><span class="v">13</span></div>
+      <div class="bar"><span class="lab">$0&ndash;5</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="v">68</span></div>
+      <div class="bar"><span class="lab">$5&ndash;10</span><span class="track"><span class="fill" style="width:76%"></span></span><span class="v">52</span></div>
+      <div class="bar"><span class="lab">$10&ndash;20</span><span class="track"><span class="fill" style="width:62%"></span></span><span class="v">42</span></div>
+      <div class="cap">Left in price order, not sorted by value, because the bands have a
+        natural sequence. Most gems are cheap: 133 of 175 are under $10.
+        PivotChart wired to both slicers.</div>
+    </div>
+  </div>
+</div>

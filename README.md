@@ -4,6 +4,10 @@ A SQL analysis of the Steam game catalog to surface **"hidden gems"**: highly
 rated games that haven't reached a mainstream audience. Built with SQLite and
 DB Browser for SQLite.
 
+**[See the Excel dashboard built from this data →](excel/README.md)**
+Four headline numbers, the 21x audience gap, hidden rates by genre, and the
+top 15 games by rating.
+
 ## 🎮 The Hidden Gems
 
 Out of **~125,000 games**, exactly **175** clear every bar of the hidden-gem

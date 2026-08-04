@@ -21,3 +21,13 @@ powerbi/
 
 # DB Browser transient journal files
 *.db-journal
+
+# Excel dashboard is public. Exclude only the working files.
+excel/names_utf8.csv
+excel/steam_hidden_gems.xlsx
+excel/Steam_Hidden_Gems_Excel_Guide.docx
+~$*
+
+# Internal notes, not part of the public deliverable
+PACK_BACKLOG.md
+*.sqbpro
