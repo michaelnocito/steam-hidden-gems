@@ -34,6 +34,7 @@ sentence in mind while you build, because every chart is there to support it.
 ## First, the words you'll see (30-second glossary)
 
 - **Table** = a range Excel treats as one named unit. Formulas can say `Games[Price]` instead of `D2:D82957`.
+- **Character encoding** = which alphabet a text file is written in. Files have to say, and readers have to listen. Get it wrong and every non-English character loads as the wrong symbol.
 - **Power Query** = Excel's built-in import tool. It connects to a file, lets you clean the data, then loads it. The connection is refreshable, which a plain copy-paste is not.
 - **PivotTable** = a drag-and-drop summary of a table (count of gems by genre, for example). No formulas needed.
 - **PivotChart** = a chart drawn straight from a PivotTable. It updates when the pivot updates.
@@ -52,12 +53,40 @@ That's the whole vocabulary. You'll use each one once below.
 2. Ribbon: **Data > Get Data > From Text/CSV**.
 3. In the file box paste the full path:
    `C:\Users\Mike\Projects\apk-portfolio-hidden-gems\excel\steam_hidden_gems.csv`
-4. In the preview window click **Transform Data** (not Load). This opens the Power Query editor.
-5. Check the column types in the header row: `Price` and `PctPositive` should show a decimal icon (1.2), `TotalReviews` and `IsHiddenGem` a whole-number icon (123), `Name` and `PrimaryGenre` a text icon (ABC). If one is wrong, click its icon and pick the right type.
-6. Ribbon (still in Power Query): **Home > Close & Load**. Excel loads all 82,956 rows as a green-striped table on a new sheet.
-7. Click anywhere in the table, then ribbon **Table Design**: change the table name (far left box) to `Games`. Rename the sheet tab to `data`.
+4. **Before you click anything else, look at the `File Origin` dropdown at the top of the preview window.** It must say `65001: Unicode (UTF-8)`. If it says anything else, change it now.
+   *This one setting decides whether 4,685 of the game names load correctly or load as garbage. It is explained under Step 1b.*
+5. In the preview window click **Transform Data** (not Load). This opens the Power Query editor.
+6. Check the column types in the header row: `Price` and `PctPositive` should show a decimal icon (1.2), `TotalReviews` and `IsHiddenGem` a whole-number icon (123), `Name` and `PrimaryGenre` a text icon (ABC). If one is wrong, click its icon and pick the right type.
+7. Ribbon (still in Power Query): **Home > Close & Load**. Excel loads all 82,956 rows as a green-striped table on a new sheet.
+8. Click anywhere in the table, then ribbon **Table Design**: change the table name (far left box) to `Games`. Rename the sheet tab to `data`.
 
 *Why bother with Power Query? If the CSV ever changes, Data > Refresh All re-imports it. That refreshable connection is the difference between "pasted some data" and "built a small pipeline."*
+
+---
+
+## Step 1b - Check the names loaded properly
+
+Scroll down the `Name` column, or press `Ctrl+F` and search for `Aventura`.
+
+You are looking for `Aventura Copilului Albastru si Urat` with the accents
+intact. If you see `Ã`, `Â`, or `â€` anywhere in a name, the file was read with
+the wrong alphabet and 4,685 names are now wrong.
+
+Those three character sequences are the signature. Once you know them you spot
+this fault in any dataset, in any tool.
+
+**Why it matters more than it looks.** Those names are not just displayed wrong,
+they are stored wrong. Search for the real title and you will not find it. Join
+another table on the name and the join fails silently. It looks like a font
+problem and it is data loss.
+
+**If you see it:** delete the query and redo Step 1, setting `File Origin` to
+`65001: Unicode (UTF-8)` in the preview window before loading.
+
+Nothing errors when this goes wrong. No red cell, no warning, no message. The
+only reason anyone catches it is that they looked.
+
+
 
 ---
 
