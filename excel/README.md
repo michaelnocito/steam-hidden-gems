@@ -129,6 +129,103 @@ old column.
 
 ---
 
+## Why it looks like this
+
+Every choice on the page was a decision, and most of them could have gone the
+other way. Here is what I picked and what I turned down.
+
+### Four numbers across the top, not eight
+
+A number earns a spot only if it changes what you do next. Four fit on one
+line and get read. Eight become a wall and get skipped.
+
+I chose total games, loved games, hidden games, and the gap. The first three
+build the funnel. The fourth is the finding.
+
+The gap reads `21.2x` rather than `2,458,263 vs 116,000`. A ratio survives
+being glanced at. Two seven-digit numbers do not.
+
+It is formatted, not typed. The cell still holds 21.19191993 and can still be
+used in a formula. Typing "21.2x" would have turned a number into text.
+
+### The hero chart is two bars
+
+Two averages, side by side. I considered a scatter of every loved game with
+audience against rating, which would have been prettier and shown the spread.
+
+I turned it down because the finding is a comparison of two groups. A scatter
+makes the reader find the pattern. Two bars hand it over.
+
+**The tall bar is grey and the tiny one is coloured.** That looks backwards
+until you ask what the chart is about. The story is not that famous games are
+big. It is that the hidden ones are almost nothing next to them. Colour goes
+on the subject, not the biggest shape.
+
+The vertical axis is gone and the exact numbers sit on the bars instead. An
+axis lets you estimate a value. A label tells you it. Keeping both asks the
+reader to do the same job twice.
+
+The legend is gone too, because there is only one series to name.
+
+### The genre chart is percentages, not counts
+
+Action has 302 loved games and Indie has 69. Counted, Action wins everything
+and the chart just shows which genres are popular.
+
+As a share of each genre's own loved games, every row asks the same question
+of itself. That is the only version that answers whether genre explains
+anything.
+
+It is sorted highest to lowest. An unsorted bar chart makes the reader rank
+the bars. A sorted one hands them the ranking.
+
+**This chart keeps its legend** while the first one lost its own. Two series
+that are not self-explaining need naming. One series does not. The rule is
+whether the reader needs it, not consistency for its own sake.
+
+Only four genres appear. Eight more exist, each with between 1 and 18 loved
+games. A percentage from 12 games is noise dressed as a finding.
+
+### The table is 15 rows sorted by rating
+
+Fifteen fits beside the charts without scrolling. Twenty would push the page
+taller than a screen.
+
+Sorted by rating rather than review count, because the claim is about quality,
+not popularity. Sorting by reviews would quietly re-introduce the fame the
+whole project is about removing.
+
+Price is in there because it is the objection. Anyone can say these games are
+obscure because they are cheap. The column shows they are not.
+
+### The page itself
+
+Gridlines and row and column headings are switched off. A grid says
+spreadsheet. Without it the same content reads as a page.
+
+The workings live on a separate sheet. Four PivotTables feed this page and
+none of them are on it. An answer sheet with the arithmetic still showing is
+harder to trust, not easier.
+
+Charts sit on the left and the list on the right, because the argument comes
+before the payoff. You are meant to believe the gap before you get the names.
+
+### What I took off, and why
+
+| Removed | Reason |
+|---|---|
+| The price band chart | Circular. Gems are defined as under $20, so the result was my own filter |
+| The vertical axis on chart one | Data labels do the job exactly rather than approximately |
+| The legend on chart one | One series does not need naming |
+| Data labels on the grey bars | Labelling the context invites reading the number that does not matter |
+| Grand total rows | Averaging averages produces a number that means nothing |
+| Field buttons | Editing controls, not part of the picture |
+| Gridlines and headings | They say spreadsheet |
+
+The general rule behind all of it: everything on a page competes for the same
+attention. Anything not carrying meaning is taking attention from something
+that is.
+
 ## How it is built
 
 Everything reads from one Excel Table named `Games`, so the numbers update if
