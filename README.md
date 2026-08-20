@@ -525,9 +525,10 @@ of analyst learning tools and portfolio work:
 - 🌐 **[michaelnocito.github.io](https://michaelnocito.github.io)** — portfolio & more projects.
 
 **Like the way the SQL here reads?** The teaching-comment format used throughout
-this repo is available as a prompt pack that gets any AI assistant to write in
-the same format, so the queries you work through explain themselves:
-[The SQL Teaching-Comment Prompt Pack](https://michaelnocito.gumroad.com/l/sql-prompt-pack) ($7).
+this repo is available as an agent that gets any AI assistant to write in
+the same format, plus a scoring rubric and handoff-mode examples, so the queries
+you work through explain themselves:
+[The SQL Comment System](https://michaelnocito.gumroad.com/l/sql-comment-system) ($29).
 
 *If you know a hidden gem that belongs on this list — or spot one that shouldn't —
 open an issue. Feedback welcome.*

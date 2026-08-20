@@ -144,6 +144,7 @@ it rests on, and a cheat sheet, is written up here:
 
 **[How to Comment SQL So It Teaches](https://michaelnocito.github.io/analyst-prep-kit/guides/sql-teaching-comments/)**
 
-If you would rather not hand-write the blocks, the prompts that get any AI
-assistant to produce this format on demand are packaged here:
-[The SQL Teaching-Comment Prompt Pack](https://michaelnocito.gumroad.com/l/sql-prompt-pack) ($7).
+If you would rather not hand-write the blocks, the agent that enforces this
+format on demand — plus a 12-point scoring rubric and handoff-mode examples —
+is packaged here:
+[The SQL Comment System](https://michaelnocito.gumroad.com/l/sql-comment-system) ($29).
